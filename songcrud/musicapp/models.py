@@ -8,13 +8,21 @@ class artiste(models.Model):
     last_name = models.CharField(max_length=50)
     age = models.IntegerField()
 
+    def __str__(self):
+        return self.first_name
+
 class song(models.Model):
+    artiste= models.ForeignKey(artiste, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     date_released= models.DateField(default=datetime.today)
     likes = models.IntegerField()
     # ariste_id=
-
+    def __str__(self):
+        return self.title
 class lyric(models.Model):
+    song= models.ForeignKey(song, on_delete=models.CASCADE)
     content = models.CharField(max_length=1500)
     # song_id=
+    def _str_(self):
+        return self.content
  
